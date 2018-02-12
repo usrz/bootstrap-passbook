@@ -1,0 +1,38 @@
+
+body {
+    padding: 50px 0px;
+}
+h4 {
+    margin-top: 20px;
+}
+table.api {
+    border-collapse: collapse;
+    width: 90%;
+}
+table.api th,
+table.api td {
+    padding: 5px;
+    border: 2px solid white;
+}
+table.api th {
+    background-color: #ccc;
+}
+table.api td {
+    background-color: #eee;
+}
+table.api td.code {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    white-space: nowrap;
+    font-size: 90%;
+}
+table.api thead,
+table.api tbody {
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+}
+table.api code {
+    background: none;
+}
+pre {
+    width: 90%;
+}

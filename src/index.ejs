@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Passbook</title>
+</head>
+<body style="padding: 50px 0px;">
+<a href="https://github.com/usrz/bootstrap-passbook">
+  <img style="position: fixed; top: 0; right: 0; border: 0; z-index: 9999" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Passbook for Bootstrap</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <h1>A IOS Passbook editor for Bootstrap</h1>
+
+  <p class="lead">
+    A fully editable IOS <a href="http://en.wikipedia.org/wiki/Passbook_(application)">Passbook</a>
+    implementation which can be used to generate data in a visual way to be loaded into your iPhone.
+  </p>
+
+  <p>
+    This is still in the early stages, but this editor allows to edit
+    in a fashion much similar to the native <em>Passbook</em> app all
+    sort of information related to passes.
+  </p>
+
+  <h2>An example</h2>
+
+  <p>
+    The passbook below is created for you in <strong>edit</strong> mode.
+    Click around, fill in some text, play with barcodes, and at the end hit
+    the little <i class="fa fa-check-square-o"></i> <em>save</em> button
+    to preview the final pass.
+  </p>
+
+  <p>
+    Images can be pasted directly from your clipboard, barcodes are generated
+    on-the-fly using our <a href="https://github.com/usrz/javascript-barcodes">JavaScript
+      library</a>, and clicking on the background of the card allows you to
+    select the pass type and colors.
+  </p>
+
+  <p><div id="passbook" style="position:relative;"></div></center>
+
+  <h2>API and use</h2>
+
+  <p>
+    The API is still rudimentary... This implementation relies on a couple
+    of components:
+  </p>
+
+  <ul>
+    <li><a href="http://www.eyecon.ro/bootstrap-slider/">Slider for Bootstrap</a>:
+      This is used to implement our color picker.</li>
+    <li><a href="https://github.com/usrz/javascript-barcodes">JavaScript Barcodes</a>:
+      To dynamically render barcodes in the pass.</li>
+  </ul>
+
+  <p>
+    To create a Passbook editor, use the usual jQuery/Boostrap way by calling
+    <code>$('<em>myElement</em>').passbook();</code>. The element supports a
+    couple of data points, namely <code>data-passbook-type</code> and
+    <code>data-passbook-transport</code>:
+  </p>
+
+  <table class="api">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="code" rowspan=5>passbook-type</td>
+      <td class="code">boarding-pass</td>
+      <td>Used to edit a boarding pass</td>
+    </tr>
+    <tr>
+      <td class="code">coupon</td>
+      <td>Display a coupon pass</td>
+    </tr>
+    <tr>
+      <td class="code">event</td>
+      <td>Display a ticket or an event pass</td>
+    </tr>
+    <tr>
+      <td class="code">store card</td>
+      <td>Display a store card pass</td>
+    </tr>
+    <tr>
+      <td class="code">generic</td>
+      <td>Display a generic pass</td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr>
+      <td class="code" rowspan=5>passbook-transpoet</td>
+      <td class="code">air</td>
+      <td>Indicates a boarding pass for a plane</td>
+    </tr>
+    <tr>
+      <td class="code">boat</td>
+      <td>Indicates a boarding pass for a boat</td>
+    </tr>
+    <tr>
+      <td class="code">bus</td>
+      <td>Indicates a boarding pass for a bus</td>
+    </tr>
+    <tr>
+      <td class="code">train</td>
+      <td>Indicates a boarding pass for a train</td>
+    </tr>
+    <tr>
+      <td class="code">generic</td>
+      <td>Indicates a generic boarding pass</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h4>Interaction with passes</h4>
+
+  <p>
+    The <code>$('<em>myElement</em>').passbook(&hellip;);</code> function
+    can also be used to interact (minimally) with the pass:
+  </p>
+
+  <table class="api">
+    <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="code">edit</td>
+      <td>Force the pass to be in "edit mode".</td>
+    </tr>
+    <tr>
+      <td class="code">save</td>
+      <td>When in edit mode, save the changes and return in view mode.</td>
+    </tr>
+    <tr>
+      <td class="code">flip</td>
+      <td>Flip the pass around.</td>
+    </tr>
+    <tr>
+      <td class="code">data</td>
+      <td>Return the internal structure of the pass (the internal API - not for the fainthearted).</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h4>Future enhancements</h4>
+
+  <p>
+    Hoping we can get some much needed finishing touches:
+  </p>
+
+  <ul>
+    <li><strong>import/export</strong>: it shouldn't be difficult to implement,
+      quickly loading JSON on creation, and saving the results out.</li>
+    <li><strong>events</strong>: again, should be trivial to implement, but hopefully
+      we will have events for <code>flipped</code> (when the pass is
+      flipped), <code>saved</code> (after hitting the save button) and
+      <code>editing</code> (when entering in edit mode).</li>
+    <li><strong>read-only mode</strong>: meh, self-explanatory.</li>
+    <li><strong>varcode pasting</strong>: allow barcodes to be pasted like
+      images, parsed (possibly by a backend) and re-rendered on the pass.</li>
+  </ul>
+
+</div> <!-- .container -->
+</body>
+</html>
